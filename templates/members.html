@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static%}
+
+{% block main_content %}
+<div class="container-fluid mt-5">
+  <div class="row g-0">
+
+
+    
+    <!-- Left Side: Register Form -->
+    <div class="col-md-4 p-3">
+      <form class="border border-primary rounded p-4 bg-white shadow-sm" action="/members/add" method="POST">
+        {% csrf_token %}
+        <h1 class="h5 mb-3 fw-bold">Register as ILB Member</h1>
+    
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+          <label for="name">Name</label>
+        </div>
+    
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="address" name="address" placeholder="Your Address">
+          <label for="address">Address</label>
+        </div>
+    
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="phone" name="phoneno" placeholder="Phone Number">
+          <label for="phone">Phone Number</label>
+        </div>
+    
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="referenceid" name="referenceid" placeholder="Reference ID">
+          <label for="referenceid">Reference ID</label>
+        </div>
+    
+        <div class="form-floating mb-2">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+          <label for="email">Email</label>
+        </div>
+    
+        <div class="form-floating mb-2">
+          <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
+          <label for="password1">Password</label>
+        </div>
+    
+        <div class="form-floating mb-2">
+          <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat Password">
+          <label for="password2">Repeat Password</label>
+        </div>
+    
+        <button class="btn btn-primary w-100 py-2 mt-2" type="submit">Register</button>
+        <p class="mt-3 text-body-secondary small">© ILB Library 2025</p>
+      </form>
+    </div>
+    
+
+    <!-- Right Side: Search and Table -->
+    <div class="col-md-8 p-0">
+      <!-- Heading and Search Bar -->
+      <div class="text-center py-3">
+        <h3 class="fw-bold">Search Registered Members</h3>
+        <form class="d-flex justify-content-center mt-3" action = "/members/" method = "POST" role="search">
+            {% csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Search" name = "query" value = "{{query}}" aria-label="Search" style="width: 60%;">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
+
+      <!-- Members Count -->
+      <div class="px-3">
+        <p>{{ members|length }} members subscribed.</p>
+      </div>
+
+      <!-- Table -->
+      <div style="overflow-y:auto; height:400px;" class="px-3">
+        <table class="table table-hover">
+          <thead class="table-light sticky-top">
+            <tr>
+              <th>Member ID</th>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Reference</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for member in members %}
+              <tr>
+                <td>{{ member.id }}</td>
+                <td>
+                    {%if member.active %}
+                      <span class = "btn btn-success">{{member.name}}</span>
+                    {%else%}
+                    <span class = "btn btn-secondary">{{member.name}}</span>
+                    {% endif %}
+                </td>
+                <td>{{ member.phone_number }}</td>
+                <td>{{ member.reference_id }}</td>
+                <td>{{ member.address }}</td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="5" class="text-center">No members found.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+{% endblock %}

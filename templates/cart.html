@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main_content %}
+
+<div class="row">
+
+<div class="col-md-9">
+<div class="album py-5 bg-body-tertiary">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      {% for book in books %}
+      <div class="col">
+        <div class="card shadow-sm position-relative">
+          <div style="position: relative;">
+            <img src="/static/book.jpeg" class="bd-placeholder-img card-img-top" alt="{{ book.book_name }}" height="225" style="object-fit: cover; width: 100%;">
+            <div style="position: absolute; top: 10px; left: 10px; background-color: rgba(0,0,0,0.6); color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem;">
+              Book
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ book.book_name }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+    
+                <form method="post" action="{% url 'add_cart' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="book_id" value="{{ book.id }}">
+                  <button type="submit" class="btn btn-outline-secondary btn-sm">Add to cart</button>
+                </form>
+    
+              </div>
+              <small class="text-body-secondary">- {{ book.author_name }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-md-3">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary border p-3 rounded">
+    <h5 class="mb-3 border-bottom pb-2">🛒 Your Cart</h5>
+
+    <div class="list-group list-group-flush border-bottom scrollarea">
+      <!-- Example cart items -->
+      {% for cc in cartcart %}
+      <div class="list-group-item py-3 lh-sm">
+        <div class="d-flex justify-content-between">
+          <strong class="mb-1">{{ cc.c_book }}</strong>
+    
+          <!-- Fix: Pass cc.id to remove_cart -->
+          <a href="{% url 'remove_cart' cc.id %}" class="btn-close btn-sm" aria-label="Remove"></a>
+        </div>
+        <div class="small text-muted">{{ cc.c_book.author_name }}</div>
+      </div>
+    {% endfor %}
+    
+
+    <!-- Checkout Button -->
+    <form method="post" action="{% url 'checkout' %}">
+      {% csrf_token %}
+      <div class="mt-3">
+        <button class="btn btn-success w-100" name="checkout" type="submit">
+          Proceed to Checkout
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</div>
+
+{% endblock %}

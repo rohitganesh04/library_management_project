@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% load %}
+
+{%block main_content%}
+
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .full-width-image {
+        width: 100%;
+        height: 75vh;
+        overflow: hidden;
+    }
+
+    .full-width-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .form-section {
+        max-width: 800px;
+        margin: 40px auto 120px; /* or 150px for more */
+        padding: 0 20px;
+    }
+</style>
+
+<div class="full-width-image">
+    <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg" alt="Contact Us">
+</div>
+
+<form class="form-section" method = "post" action = "/contact">
+    {% csrf_token %}
+    <h1> Fill this form to contact us </h1>
+    <div class="input-group mb-3">
+        <span class="input-group-text">First and last name:</span>
+        <input type="text" placeholder="first name" name = "fname"aria-label="First name" class="form-control">
+        <input type="text" placeholder="last name" name = "lname" aria-label="Last name" class="form-control">
+    </div>
+
+    <div class="input-group mb-3 flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping">phone no:</span>
+        <input type="text" class="form-control" placeholder="10-digit number" name = "phone" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address:</label>
+        <input type="email" class="form-control" name = "email" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name = "desc" placeholder="The problem you faced...."></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+<nav class="navbar sticky-bottom bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Contact us</a>
+    </div>
+  </nav>
+
+{% endblock %}

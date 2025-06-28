@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{%block main_content%}
+<!-- Main Content with Carousel and Features -->
+<main class="flex-grow-1">
+
+<!-- Carousel -->
+<div id="myCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" class="active" aria-current="true"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item">
+      <img src="{% static 'image3.jpg' %}" class="d-block w-100" alt="First slide" style="height: 500px; object-fit: cover;">
+      <div class="container">
+        <div class="carousel-caption text-start">
+          <h1>Rent Your Book Now!</h1>
+          <p>A reader lives a thousand lives before he dies. The man who never reads lives only one.</p>
+          <p><a class="btn btn-primary" href="/books">Get Started</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'image1.webp' %}" class="d-block w-100" alt="Second slide" style="height: 500px; object-fit: cover;">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Rent Your Book Now!</h1>
+          <p>A reader lives a thousand lives before he dies. The man who never reads lives only one.</p>
+          <p><a class="btn btn-primary" href="/books">Get Started</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item active">
+      <img src="{% static 'image2.jpeg' %}" class="d-block w-100" alt="Third slide" style="height: 500px; object-fit: cover;">
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1>Rent Your Book Now!</h1>
+          <p>A reader lives a thousand lives before he dies. The man who never reads lives only one.</p>
+          <p><a class="btn btn-primary" href="/books">Get Started</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+  <!-- Marketing -->
+  <div class="container marketing">
+    <div class="row">
+      <div class="col-lg-4 text-center">
+        <img src = "{%static 'PsychologicalThriller.jpeg' %}"  class="rounded-circle" width="140" height="140" alt="Psychological Thriller">
+        <h2>Psychological Thriller</h2>
+        <p>Unravel secrets and chase clues in a thrilling race against time.</p>
+        <p><a class="btn btn-primary" href="/books">View details »</a></p>
+      </div>
+  
+      <div class="col-lg-4 text-center">
+        <img src = "{%static 'ScienceFantasy.webp' %}"  class="rounded-circle" width="140" height="140" alt="Science Fantasy">
+        <h2>Science Fantasy</h2>
+        <p>Where magic meets machines, and imagination knows no bounds.</p>
+        <p><a class="btn btn-primary" href="/books">View details »</a></p>
+      </div>
+  
+      <div class="col-lg-4 text-center">
+        <img src = "{%static 'HistoricalFiction.jpeg' %}" class="rounded-circle" width="140" height="140" alt="Historical Fiction">
+        <h2>Historical Fiction</h2>
+        <p>Step into the past and witness history through unforgettable stories.</p>
+        <p><a class="btn btn-primary" href="/books">View details »</a></p>
+      </div>
+    </div>
+  </div>
+  
+
+    <!-- Featurettes -->
+    <hr class="featurette-divider">
+
+<div class="row featurette align-items-center py-5">
+  <!-- Text Column -->
+  <div class="col-md-7">
+    <h2 class="featurette-heading mb-4" style="color: #000;">
+      The Lifeblood of the Medical Field
+      <br>
+      <span class="text-success fs-5 d-block mt-2">
+        Healing begins with knowledge — read to save lives.
+      </span>
+    </h2>
+    <p class="lead text-secondary" style="line-height: 1.8;">
+      Reading books in the field of medicine is not just a necessity—it's a commitment to lifelong learning.
+      Medical books offer foundational knowledge about the human body, diseases, diagnostics, and treatments.
+      They help students and professionals stay updated with the latest advancements in healthcare and research.
+      Reading clinical case studies sharpens diagnostic thinking and decision-making skills.
+      Textbooks build theoretical knowledge, while medical memoirs bring empathy and patient perspectives.
+      Reference books like pharmacology and anatomy serve as daily tools for practice.
+      Medical journals and literature reviews promote evidence-based treatment approaches.
+      They also encourage critical thinking and help in preparing for competitive exams and licensing tests.
+      Beyond science, medical reading fosters ethical thinking and communication with patients.
+      Ultimately, a well-read doctor is a better healer—both in knowledge and compassion.
+    </p>
+  </div>
+
+  <!-- Image Column -->
+  <div class="col-md-5">
+    <img src="{% static 'medicine.jpg' %}" 
+         class="img-fluid rounded-4 border border-2 shadow-sm"
+         style="border-color: black; max-height: 500px; object-fit: cover;" 
+         alt="Medical Books" 
+         width="100%">
+  </div>
+</div>
+
+    <hr class="featurette-divider">
+    <div class="row featurette align-items-center my-4">
+      <!-- Image on the left -->
+      <div class="col-md-6 pe-md-0">
+        <img src="{% static 'ufo.jpg' %}" 
+             class="img-fluid rounded-4 shadow-lg border border-2 w-100" 
+             style="height: 450px; object-fit: cover; border-color: #6c757d;" 
+             alt="Science Fiction Books">
+      </div>
+    
+      <!-- Text on the right -->
+      <div class="col-md-6 ps-md-4">
+        <h2 class="featurette-heading mb-3">
+          Science Fiction (Sci-Fi)
+          <span class="text-muted d-block" style="font-size: 1rem; font-weight: normal;">
+            "Science fiction is the most important literature in the history of the world, because it’s the history of ideas, the history of our civilization birthing itself."
+          </span>
+        </h2>
+        <p class="lead">
+          Science Fiction, often known as Sci-Fi, explores imaginative concepts rooted in science and technology.
+          It dives into futuristic worlds, space exploration, time travel, and alien civilizations.
+          This genre often reflects on the impact of science on society and human behavior.
+          Sci-Fi books challenge readers to think beyond current possibilities.
+          They blend scientific facts with creative storytelling and ethical questions.
+          Popular themes include artificial intelligence, cloning, dystopias, and advanced robotics.
+          It offers both thrilling adventures and deep philosophical insights.
+          Authors like Isaac Asimov, Arthur C. Clarke, and Philip K. Dick are pioneers of this genre.
+          Modern Sci-Fi continues to inspire innovation and critical thinking.
+          It is a favorite among readers who love technology and imagination.
+        </p>
+      </div>
+    </div>
+    
+    <hr class="featurette-divider">
+
+    <div class="row featurette align-items-center py-5">
+      <!-- Text Column -->
+      <div class="col-md-7">
+        <h2 class="featurette-heading mb-4" style="color: #000;">
+          Travel & Adventure Books
+          <br>
+          <span class="text-success fs-5 d-block mt-2">
+            Travel far enough, you meet yourself.
+          </span>
+        </h2>
+        <p class="lead text-secondary" style="line-height: 1.8;">
+          Travel & Adventure books take readers on thrilling journeys across the globe.
+          These books explore unfamiliar landscapes, cultures, and personal discoveries.
+          They blend real-world experiences with vivid storytelling and often reflect deep introspection.
+          From climbing Everest to navigating the Amazon, the genre is rich with human grit and nature’s wonders.
+          Such stories inspire readers to break routines and explore the unknown.
+          They often teach geography, history, and survival skills in subtle ways.
+          Adventure narratives bring suspense and excitement, while travel memoirs offer soul-stirring reflections.
+          Famous authors like Paul Theroux and Bill Bryson have shaped the genre with humor and insight.
+          Readers can escape daily life and live vicariously through each page.
+          This genre is perfect for dreamers, explorers, and lovers of freedom.
+          
+          
+        </p>
+      </div>
+    
+      <!-- Image Column -->
+      <div class="col-md-5">
+        <img src="{% static 'travel.jpg' %}" 
+             class="img-fluid rounded-4 border border-2 shadow-sm"
+             style="border-color: black; max-height: 500px; object-fit: cover;" 
+             alt="Medical Books" 
+             width="100%">
+      </div>
+    </div>
+    <hr class="featurette-divider">
+    
+  </div>
+
+</main>
+</div>
+
+{% endblock %}
